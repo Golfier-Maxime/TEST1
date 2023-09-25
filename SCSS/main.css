@@ -1,0 +1,15 @@
+.e-button {
+  color: red;
+  transition: 1s;
+}
+.e-button :hover {
+  scale: 1.1;
+}
+
+h1 {
+  color: rgb(203, 18, 223);
+}
+
+p {
+  color: rgb(23, 186, 116);
+}/*# sourceMappingURL=main.css.map */

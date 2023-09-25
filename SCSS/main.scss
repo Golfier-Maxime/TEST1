@@ -1,0 +1,10 @@
+@import '_variables.scss';
+@import 'elements/_button.scss';
+
+h1 {
+    color: $main-color;
+}
+
+p {
+    color: $sub-color;
+}
