@@ -116,9 +116,9 @@ let chaussures = [
 
 // 1. Faire une boucle sur tout le tableau et de log les chaussures une par une
 
-for (var i = 0; i < chaussures.length; i++) {
-  console.log(chaussures[i]);
-};
+chaussures.filter((chaussure) => true).forEach((chaussure) => {
+  console.log(chaussure);
+});
 
 // 2. Log un tableau de toutes les Nikes
 
