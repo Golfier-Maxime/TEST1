@@ -152,7 +152,7 @@ console.log(chaussuresCollector);
 
 for (var i = 0; i < chaussures.length; i++) {
   if (chaussures[i].marque === "Vans" && chaussures[i].titre === "Sk8") {
-    console.log(`Couleur des lacets Vans Sk8 : ${chaussures[i].elements.lacets}`);
+    console.log(`Couleurblacets Vans Sk8 : ${chaussures[i].elements.lacets}`);
     break;
   }
 }
@@ -162,6 +162,8 @@ for (var i = 0; i < chaussures.length; i++) {
 for (var i = 0; i < chaussures.length; i++) {
   if (chaussures[i].marque === "Vans" && chaussures[i].titre === "Sk8") {
     chaussures[i].elements.lacets = "violet";
+    chaussures[i].elements.corps = "violet";
+    chaussures[i].elements.languette = "violet";
     console.log("Vans Sk8 maj :");
     console.log(chaussures[i]);
     break;
