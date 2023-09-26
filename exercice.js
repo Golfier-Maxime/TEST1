@@ -116,14 +116,64 @@ let chaussures = [
 
 // 1. Faire une boucle sur tout le tableau et de log les chaussures une par une
 
+for (var i = 0; i < chaussures.length; i++) {
+  console.log(chaussures[i]);
+};
+
 // 2. Log un tableau de toutes les Nikes
+
+var chaussuresNike = [];
+for (var i = 0; i < chaussures.length; i++) {
+  if (chaussures[i].marque === "Nike") {
+    chaussuresNike.push(chaussures[i]);
+  }
+}
+console.log(chaussuresNike);
 
 // 3. Log du prix des Vans "Old Skool"
 
+for (var i = 0; i < chaussures.length; i++) {
+  if (chaussures[i].marque === "Vans" && chaussures[i].titre === "Old Skool") {
+    console.log(`Prix de Vans Old Skool : ${chaussures[i].prix}`);
+  }
+}
+
 // 4. Log un tableau de toutes les chaussures collector
+
+var chaussuresCollector = [];
+for (var i = 0; i < chaussures.length; i++) {
+  if (chaussures[i].collector === true) {
+    chaussuresCollector.push(chaussures[i]);
+  }
+}
+console.log(chaussuresCollector);
 
 // 5. Log couleur lacets de la vans Sk8
 
+for (var i = 0; i < chaussures.length; i++) {
+  if (chaussures[i].marque === "Vans" && chaussures[i].titre === "Sk8") {
+    console.log(`Couleur des lacets Vans Sk8 : ${chaussures[i].elements.lacets}`);
+    break;
+  }
+}
+
 // 6. Changer la couleur de la vans Sk8 en violet et log la chaussure
 
+for (var i = 0; i < chaussures.length; i++) {
+  if (chaussures[i].marque === "Vans" && chaussures[i].titre === "Sk8") {
+    chaussures[i].elements.lacets = "violet";
+    console.log("Vans Sk8 maj :");
+    console.log(chaussures[i]);
+    break;
+  }
+}
+
 // 7. Plus compliqué : Log le montant total de Toutes les Nikes
+
+var montantTotalNike = 0;
+for (var i = 0; i < chaussures.length; i++) {
+  if (chaussures[i].marque === "Nike") {
+    montantTotalNike += chaussures[i].prix;
+  }
+}
+console.log(`montant total Nike : ${montantTotalNike}`);
