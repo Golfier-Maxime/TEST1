@@ -1,6 +1,9 @@
 <template>
   <div>
-    <button v-bind:class="className">Order Now</button>
+    <a v-if="href" :href="href" class="buttonOrder" :class="className"
+      ><slot></slot
+    ></a>
+    <button v-else :class="className"><slot>oui</slot></button>
   </div>
 </template>
 <script>
@@ -36,5 +39,18 @@ export default {
   padding-bottom: 33px;
   padding-right: 67px;
   padding-left: 67px;
+
+  &.-rounded {
+    background: $primary-color;
+    border-radius: rem(37);
+    font-weight: 500;
+    padding: rem(26) rem(64);
+  }
+
+  &.-small {
+    font-size: $sm-font-size;
+    padding: rem(14) rem(29);
+    font-weight: 400;
+  }
 }
 </style>
