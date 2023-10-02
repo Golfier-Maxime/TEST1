@@ -21,3 +21,15 @@ const router = createRouter({
 })
 
 export default router
+
+
+
+// entrée une valeur en px
+
+// function conversion(valeurEnPx) {
+//   return valeurEnPx / 16
+// }
+
+// let variableEnRem = conversion(px)
+
+// sortie une valeur en rem
