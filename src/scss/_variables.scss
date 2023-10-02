@@ -1,0 +1,19 @@
+@import "_function.scss";
+$primary-color: #F48E28;
+$sec-color: #F5DDC4;
+$white: #fff;
+$gray: #b6b6b6;
+$black: #000;
+
+$sm-font-size :rem(13);
+$reg-font-size :rem(18);
+$med-font-size :rem(26);
+$big-font-size :rem(36);
+$bigr-font-size :rem(48);
+$giant-font-size :rem(95);
+
+// media queries
+
+$small : 600px;
+$medium : 750px;
+$large : 960px;
