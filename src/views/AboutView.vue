@@ -1,7 +1,13 @@
+<script setup>
+import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
+</script>
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <DefaultLayout>
+    <template #header> Nouveau Header </template>
+    Page about
+    <template #aside> aside about </template>
+    <template #footer> Nouveau Footer </template>
+  </DefaultLayout>
 </template>
 
 <style>

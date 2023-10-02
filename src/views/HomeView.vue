@@ -1,30 +1,40 @@
 <script setup>
-import MyButton from "@/components/MyButton.vue";
-import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
+import MyBackgroundScroll from '../components/MyBackgroundScroll.vue'
+import MyButton from '@/components/elements/MyButton.vue'
+import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
 </script>
 
 <template>
-  <div class="marge">
-    <MyButton></MyButton>
-    <DefaultLayout>
-      <template v-slot:header> </template>
-      <h1>Hello Word</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quos quis
-        beatae dolorum debitis corrupti et sint mollitia inventore similique.
-        Alias perspiciatis provident velit optio error necessitatibus numquam
-        dolorem expedita.
-      </p>
-    </DefaultLayout>
-  </div>
+  <DefaultLayout>
+    <template #header>
+      <nav>
+        <ul>
+          <li><a href="#">Nav link 1</a></li>
+          <li><a href="#">Nav link 2</a></li>
+          <li><a href="#">Nav link 3</a></li>
+        </ul>
+      </nav>
+    </template>
+
+    <template #aside>
+      <nav>
+        <ul>
+          <li><a href="#">Aside link 1</a></li>
+          <li><a href="#">Aside link 2</a></li>
+          <li><a href="#">Aside link 3</a></li>
+        </ul>
+      </nav>
+    </template>
+
+    <MyBackgroundScroll />
+
+    <template #footer>
+      <MyButton href="/about" variant="rounded">My link Button</MyButton>
+    </template>
+  </DefaultLayout>
+
+  <!-- <MyButton size="small" href="/about">My Small Button</MyButton>
+  <MyButton href="/about">My link Button</MyButton>
+  <MyButton variant="rounded" >My rounded Button</MyButton> -->
+  <p></p>
 </template>
-
-<style lang="scss" scoped>
-@import "@/scss/_variables.scss";
-
-.marge {
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-</style>

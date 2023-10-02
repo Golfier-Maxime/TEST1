@@ -1,54 +1,51 @@
 <template>
-  <div class="layout">
+  <main class="layout">
     <header class="layout__header">
       <slot name="header"></slot>
     </header>
-
     <aside class="layout__aside">
       <slot name="aside"></slot>
     </aside>
     <article class="layout__article">
-      <slot name="article"></slot>
+      <slot></slot>
     </article>
-
     <footer class="layout__footer">
       <slot name="footer"></slot>
     </footer>
-  </div>
+  </main>
 </template>
-<script></script>
-
 <style lang="scss" scoped>
 .layout {
-  min-height: 120px;
   display: grid;
   grid-template:
-    "header"
-    "aside"
-    "article"
-    "footer";
+    'header'
+    'article'
+    'aside'
+    'footer';
+
   @include medium-up {
     grid-template:
-      "header header header"
-      "aside article article"
-      "footer footer footer";
+      'header header header'
+      'article article aside'
+      'footer footer footer';
   }
+
   > * {
     padding: rem(16);
-  }
-  &__header {
-    background-color: $primary-color;
-    grid-area: header;
-  }
-  &__aside {
-    grid-area: aside;
   }
   &__article {
     grid-area: article;
   }
+  &__aside {
+    grid-area: aside;
+  }
   &__footer {
-    background-color: $primary-color;
+    background: $primary-color;
     grid-area: footer;
+  }
+  &__header {
+    background: $primary-color;
+    grid-area: header;
   }
 }
 </style>

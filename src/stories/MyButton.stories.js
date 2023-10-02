@@ -1,22 +1,22 @@
-import MyButton from "@/components/MyButton.vue";
+import MyButton from '@/components/elements/MyButton.vue'
 
 export default {
-  title: "Elements/MyButton",
+  title: 'Elements/MyButton',
   component: MyButton,
   argTypes: {
-    href: {
-      control: "text",
+    href : {
+      control: "text"
     },
     size: {
       control: "select",
-      options: ["regular", "small"],
+      options: ['regular', 'small']
     },
     variant: {
       control: "select",
-      options: ["default", "rounded"],
-    },
-  },
-};
+      options: ['default', 'rounded']
+    }
+  }
+}
 
 export const PrimaryButton = {
   render: (args) => {
@@ -24,15 +24,70 @@ export const PrimaryButton = {
       components: {
         MyButton,
       },
-      setup() {
-        return {args};
+      setup(){
+        return { args }
       },
-      template: `<MyButton v-bind="args"> My Link </MyButton>`,
-    };
+      template: `<MyButton v-bind="args">My link Button</MyButton>`
+    }
   },
   args: {
     size: "regular",
-    variant: "default",
+    variant: "default"
+  }
+}
+
+export const SecondaryButton = {
+  render: (args) => {
+    return {
+      components: {
+        MyButton,
+      },
+      setup(){
+        return { args }
+      },
+      template: `<MyButton v-bind="args">My link Button</MyButton>`
+    }
   },
-};
+  args: {
+    size: "regular",
+    variant: "rounded"
+  }
+}
+
+
+export const SmallPrimaryButton = {
+  render: (args) => {
+    return {
+      components: {
+        MyButton,
+      },
+      setup(){
+        return { args }
+      },
+      template: `<MyButton v-bind="args">My link Button</MyButton>`
+    }
+  },
+  args: {
+    size: "small",
+    variant: "default"
+  }
+}
+
+export const SmallSecondaryButton = {
+  render: (args) => {
+    return {
+      components: {
+        MyButton,
+      },
+      setup(){
+        return { args }
+      },
+      template: `<MyButton v-bind="args">My link Button</MyButton>`
+    }
+  },
+  args: {
+    size: "small",
+    variant: "rounded"
+  }
+}
 
