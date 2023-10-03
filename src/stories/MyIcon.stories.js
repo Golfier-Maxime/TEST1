@@ -6,7 +6,11 @@ export default {
   argTypes: {
     name : {
       control : "select",
-      options : ['community', 'documentation', 'ecosystem', 'support', 'tooling']
+      options : ['community', 'documentation', 'ecosystem', 'support', 'tooling','cf','fc','camion','leftarrow','rightarrow','arrow']
+    },
+    color : {
+      control : "select",
+      options : ['orange','default','light-orange','black']
     }
   }
 }
@@ -24,6 +28,7 @@ export const Icon = {
     }
   },
   args: {
-    name: 'community'
+    name: 'community',
+    color:'default'
   }
 }
