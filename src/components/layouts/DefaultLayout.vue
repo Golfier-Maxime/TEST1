@@ -40,6 +40,7 @@
     grid-area: aside;
   }
   &__footer {
+    margin-top: 200px;
     background: $primary-color;
     grid-area: footer;
   }
