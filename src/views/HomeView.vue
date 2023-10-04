@@ -7,13 +7,13 @@ import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
 <template>
   <DefaultLayout>
     <template #header>
-      <nav>
+      <!-- <nav>
         <ul>
           <li><a href="#">Nav link 1</a></li>
           <li><a href="#">Nav link 2</a></li>
           <li><a href="#">Nav link 3</a></li>
         </ul>
-      </nav>
+      </nav> -->
     </template>
 
     <template #aside>
@@ -26,10 +26,8 @@ import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
       </nav>
     </template>
 
-    <MyBackgroundScroll />
-
     <template #footer>
-      <MyButton href="/about" variant="rounded">My link Button</MyButton>
+      <!-- <MyButton href="/about" variant="rounded">My link Button</MyButton> -->
     </template>
   </DefaultLayout>
 
