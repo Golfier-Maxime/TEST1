@@ -10,7 +10,7 @@ export default {
     },
     size: {
       control: "select",
-      options: ['weight', 'small']
+      options: ['weight', 'small','big']
     },
     
   }

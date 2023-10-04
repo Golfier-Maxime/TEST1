@@ -8,7 +8,8 @@ const props = defineProps({
 
 const className = computed(() => ({
   ' -weight': props.size === 'weight',
-  ' -small': props.size === 'small'
+  ' -small': props.size === 'small',
+  ' -big': props.size === 'big'
 }))
 </script>
 
@@ -27,6 +28,10 @@ const className = computed(() => ({
   }
   &.-small {
     font-weight: 400;
+  }
+  &.-big {
+    font-size: 95px;
+    font-weight: 700;
   }
 }
 </style>

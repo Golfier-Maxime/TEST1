@@ -7,7 +7,7 @@
       <slot name="aside"></slot>
     </aside>
     <article class="layout__article">
-      <slot></slot>
+      <slot name="article"></slot>
     </article>
     <footer class="layout__footer">
       <slot name="footer"></slot>
