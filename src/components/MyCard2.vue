@@ -2,7 +2,7 @@
 import MyTitle from '../components/elements/MyTitle.vue'
 import MyIcon from '../components/elements/MyIcon.vue'
 
-const props = defineProps({
+defineProps({
   imageSrc: String,
   imageAlt: String,
   title: String,
@@ -49,6 +49,8 @@ const props = defineProps({
     gap: 40px;
   }
   .card__c1 {
+    display: flex;
+    flex-direction: column;
     padding-right: 20px;
     margin-top: -100px;
     padding-top: 100px;

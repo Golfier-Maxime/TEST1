@@ -2,7 +2,7 @@
 import MyButton from '../components/elements/MyButton.vue'
 import MyTitle from '../components/elements/MyTitle.vue'
 
-const props = defineProps({
+defineProps({
   imageSrc: String,
   imageAlt: String,
   title: String,

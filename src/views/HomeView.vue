@@ -1,7 +1,6 @@
 <script setup>
-import MyBackgroundScroll from '../components/MyBackgroundScroll.vue'
-import MyButton from '@/components/elements/MyButton.vue'
 import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
+import MyCard2 from '@/components/MyCard2.vue'
 </script>
 
 <template>
@@ -17,13 +16,26 @@ import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
     </template>
 
     <template #aside>
-      <nav>
-        <ul>
-          <li><a href="#">Aside link 1</a></li>
-          <li><a href="#">Aside link 2</a></li>
-          <li><a href="#">Aside link 3</a></li>
-        </ul>
-      </nav>
+      <div>
+        <div class="card__c1">
+          <MyCard2
+            title="Burger"
+            desc="Mushroom Sauce"
+            prix="$5.15"
+            imageSrc="burger.png"
+          ></MyCard2>
+          <MyCard2
+            title="Food Combo"
+            desc="Mushroom Sauce"
+            prix="$9.15"
+            imageSrc="Combo.png"
+          ></MyCard2>
+        </div>
+        <div class="card__c2">
+          <MyCard2 title="Pizza" desc="Mushroom Sauce" prix="$9.15" imageSrc="pizza.png"></MyCard2>
+          <MyCard2 title="Cake" desc="Mushroom Sauce" prix="$5.15" imageSrc="pure.png"></MyCard2>
+        </div>
+      </div>
     </template>
 
     <template #footer>
@@ -36,3 +48,15 @@ import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
   <MyButton variant="rounded" >My rounded Button</MyButton> -->
   <p></p>
 </template>
+
+<style lang="scss">
+.card__c1 {
+  display: flex;
+  gap: 20px;
+}
+.card__c2 {
+  display: flex;
+  gap: 20px;
+  margin-top: rem(80);
+}
+</style>
