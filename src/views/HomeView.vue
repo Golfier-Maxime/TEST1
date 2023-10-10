@@ -2,6 +2,28 @@
 import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
 import MyCard2 from '@/components/MyCard2.vue'
 import MyTitle from '@/components/elements/MyTitle.vue'
+import { onMounted } from 'vue'
+import axios from 'axios'
+// Modifier les deux fonctions pour executer 2 requêtes dans chacune, l'une après l'autre.
+// Récupérer toutes les recettes
+// Récupérer toutes les recettes de la cuisine 1 -> /recipes/cuisine/:cuisineId
+const client = axios.create({ baseURL: import.meta.env.VITE_API_URL })
+const getRecipesThen = () => {
+  fetch(import.meta.env.VITE_API_URL + '/recipes')
+    .then((response) => response.json())
+    .then((data) => console.log('fetch + then', data))
+}
+
+const getRecipes = async () => {
+  const response = await client.get('/recipes')
+  const cuisineRecipes = await client.get('/recipes/cuisine/1')
+  return { recipes: response, cuisineRecipes: cuisineRecipes }
+}
+
+onMounted(async () => {
+  console.log('fetch + await', await getRecipes())
+  getRecipesThen()
+})
 </script>
 
 <template>
@@ -35,24 +57,19 @@ import MyTitle from '@/components/elements/MyTitle.vue'
             <MyCard2
               title="Burger"
               desc="Mushroom Sauce"
-              prix="$5.15"
+              prix="5.15"
               imageSrc="burger.png"
             ></MyCard2>
             <MyCard2
               title="Food Combo"
               desc="Mushroom Sauce"
-              prix="$9.15"
+              prix="9.15"
               imageSrc="Combo.png"
             ></MyCard2>
           </div>
           <div class="card__c2">
-            <MyCard2
-              title="Pizza"
-              desc="Mushroom Sauce"
-              prix="$9.15"
-              imageSrc="pizza.png"
-            ></MyCard2>
-            <MyCard2 title="Cake" desc="Mushroom Sauce" prix="$5.15" imageSrc="pure.png"></MyCard2>
+            <MyCard2 title="Pizza" desc="Mushroom Sauce" prix="9.15" imageSrc="pizza.png"></MyCard2>
+            <MyCard2 title="Cake" desc="Mushroom Sauce" prix="5.15" imageSrc="pure.png"></MyCard2>
           </div>
         </div>
       </div>
@@ -75,6 +92,7 @@ import MyTitle from '@/components/elements/MyTitle.vue'
   margin-left: rem(100);
 }
 .text {
+  margin-top: rem(16);
   font-size: 18px;
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;

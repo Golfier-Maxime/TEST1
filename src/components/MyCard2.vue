@@ -77,6 +77,11 @@ defineProps({
     margin-top: rem(16);
     display: flex;
     justify-content: center;
+
+    &::before {
+      content: '$ ';
+      color: red;
+    }
   }
 }
 </style>
