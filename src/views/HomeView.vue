@@ -2,27 +2,63 @@
 import DefaultLayout from '@/components/layouts/DefaultLayout.vue'
 import MyCard2 from '@/components/MyCard2.vue'
 import MyTitle from '@/components/elements/MyTitle.vue'
-import { onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import axios from 'axios'
+import { client } from '@/utils/axios'
+
 // Modifier les deux fonctions pour executer 2 requêtes dans chacune, l'une après l'autre.
 // Récupérer toutes les recettes
 // Récupérer toutes les recettes de la cuisine 1 -> /recipes/cuisine/:cuisineId
-const client = axios.create({ baseURL: import.meta.env.VITE_API_URL })
+
 const getRecipesThen = () => {
+  // 1er appel
   fetch(import.meta.env.VITE_API_URL + '/recipes')
     .then((response) => response.json())
-    .then((data) => console.log('fetch + then', data))
+    .then((recipes) => {
+      // Puis le 2ème lorsque le 1er est terminé
+      fetch(import.meta.env.VITE_API_URL + '/recipes/cuisine/1')
+        .then((response) => response.json())
+        .then((cuisineRecipies) => console.log({ recipes, cuisineRecipies }))
+    })
 }
+
+const recipes = ref([])
 
 const getRecipes = async () => {
   const response = await client.get('/recipes')
-  const cuisineRecipes = await client.get('/recipes/cuisine/1')
-  return { recipes: response, cuisineRecipes: cuisineRecipes }
+  return response.data
 }
 
+// Retourner un tableau des noms des recettes en utilisant recipes.map
+// ["Spaghetti Bolognese", "Vegan Stir-Fry", "Updated Spaghetti name", "Riz cantonais", ...]
+// Retourner un tableau des recettes dont le titre contient « Spaghetti » en utilisant recipes.filter
+// ["Spaghetti Bolognese", "Updated Spaghetti name"]
+// Retourner un boolean qui dit si une de vos recettes est du goal_id 1 en utilisant recipes.some
+// true
+const recipesNames = computed(() => {
+  return recipes.value.map((item) => item.recipe_name)
+})
+
+const spaghettiRecipes = computed(() => {
+  return recipes.value.filter((item) => item.recipe_name.includes('Spaghetti'))
+})
+
+const hasGoalId1Long = computed(() => {
+  return recipes.value.some((item) => {
+    if (item.goal_id === 1) {
+      return true
+    } else {
+      return false
+    }
+  })
+})
+
+const hasGoalId1 = computed(() => {
+  return recipes.value.some((item) => item.goal_id === 1)
+})
+
 onMounted(async () => {
-  console.log('fetch + await', await getRecipes())
-  getRecipesThen()
+  recipes.value = await getRecipes()
 })
 </script>
 
@@ -36,7 +72,20 @@ onMounted(async () => {
           <li><a href="#">Nav link 3</a></li>
         </ul>
       </nav> -->
+      <!-- <ul>
+        <li v-for="(recipe, index) in recipes" :k>{{ recipe.recipe_name }}</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <p>{{ recipes }}</p>
+      <p>{{ recipesNames }}</p>
+      <p>{{ spaghettiRecipes }}</p>
+      <p>{{ hasGoalId1 }}</p>
+      <p>{{ hasGoalId1Long }}</p> -->
     </template>
+
     <template #article>
       <div class="article__title">
         <MyTitle content="The Fastest" size="big"></MyTitle>
@@ -53,23 +102,13 @@ onMounted(async () => {
       <div class="hero2">
         <img src="public\Abstract.svg" alt="" />
         <div>
-          <div class="card__c1">
+          <div class="card__c1" v-for="recipe in recipes">
             <MyCard2
-              title="Burger"
-              desc="Mushroom Sauce"
+              :title="recipe.recipe_name"
+              :desc="recipe.recipe_description"
               prix="5.15"
-              imageSrc="burger.png"
+              :imageSrc="recipe.image_url"
             ></MyCard2>
-            <MyCard2
-              title="Food Combo"
-              desc="Mushroom Sauce"
-              prix="9.15"
-              imageSrc="Combo.png"
-            ></MyCard2>
-          </div>
-          <div class="card__c2">
-            <MyCard2 title="Pizza" desc="Mushroom Sauce" prix="9.15" imageSrc="pizza.png"></MyCard2>
-            <MyCard2 title="Cake" desc="Mushroom Sauce" prix="5.15" imageSrc="pure.png"></MyCard2>
           </div>
         </div>
       </div>

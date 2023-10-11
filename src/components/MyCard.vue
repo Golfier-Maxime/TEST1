@@ -8,7 +8,9 @@ defineProps({
   title: String,
   note: String,
   prix: String,
-  buttonLabel: String
+  buttonLabel: String,
+  id: Number,
+  description: String
 })
 </script>
 
@@ -35,6 +37,9 @@ defineProps({
           {{ prix }}
         </p>
       </div>
+    </div>
+    <div>
+      <p>{{ description }}</p>
     </div>
   </div>
 </template>
